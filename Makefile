@@ -37,7 +37,7 @@ endif
 
 MINGW := $(findstring MINGW32, $(UNAME))
 LIBS += -lstdc++ -lm
-VERSION := $(shell git describe --match "fcserver-*")
+VERSION := 1.0.0  # or whatever version you want
 CXXFLAGS += -DFCSERVER_VERSION=$(VERSION)
 
 ifeq ($(UNAME), Darwin)
@@ -186,10 +186,10 @@ CXXFLAGS += -felide-constructors -fno-exceptions -fno-rtti
 
 # Force 64-bit compilation for all object files
 %.o: %.cpp
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@ -arch x86_64
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
 
 %.o: %.c
-	$(CC) $(CPPFLAGS) -c $< -o $@ -arch x86_64
+	$(CC) $(CPPFLAGS) -c $< -o $@
 
 OBJS := $(CPP_FILES:.cpp=.o) $(C_FILES:.c=.o)
 
